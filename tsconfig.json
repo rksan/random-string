@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "./configs/tsconfig.base.json"
+  ],
+  "include": [
+    "./src/**/*",
+    "./test/**/*",
+    "./.eslintrc."
+  ],
+  "compilerOptions": {
+    "baseUrl": "./", /* Specify the base directory to resolve non-relative module names. */
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+  }
+}
