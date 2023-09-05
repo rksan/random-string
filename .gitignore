@@ -1,6 +1,7 @@
 # add
 .build
 .lib
+.brawser
 tsconfig.tsnode.json
 
 # Logs

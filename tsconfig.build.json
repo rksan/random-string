@@ -17,7 +17,7 @@
       "./types-defines",
       "node_modules/@types"
     ], */
-    "emitDeclarationOnly": true, /* Only output d.ts files and not JavaScript files. */
+    // "emitDeclarationOnly": true, /* Only output d.ts files and not JavaScript files. */
     "declaration": true,
     "declarationMap": true,
     "declarationDir": "./types-defines",

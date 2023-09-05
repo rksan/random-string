@@ -1,10 +1,12 @@
 {
-  "name": "random-string",
+  "name": "@rksan/random-string",
   "description": "ランダムな文字列の生成",
   "version": "0.0.1",
   "main": ".build/index.js",
-  "brawser": ".build/index.min.js",
   "types": "types-defines/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "tsc:init": "tsc --init",
     "pretest": "rm -rf .nyc_output && rm -rf tsconfig.tsnode.json && tsc -p ./tsconfig.json --showConfig > tsconfig.tsnode.json",
@@ -13,11 +15,8 @@
     "coverage": "npm run test && nyc report --reporter=lcovonly",
     "prebuild:ts": "rm -rf types-defines",
     "build:ts": "tsc -d -p ./tsconfig.build.json",
-    "build:dev": "webpack --config ./configs/webpack.config.dev.js",
-    "build:min": "webpack --config ./configs/webpack.config.min.js",
-    "build:node": "webpack --config ./configs/webpack.config.node.js",
-    "build": "npm run build:ts && npm run build:dev && npm run build:min && npm run build:node",
-    "prebuild:clean": "rm -rf .build && rm -rf .lib",
+    "build": "npm run build:ts",
+    "prebuild:clean": "rm -rf .build",
     "build:clean": "npm run build"
   },
   "repository": {
@@ -38,32 +37,27 @@
     "@babel/core": "^7.22.15",
     "@babel/eslint-parser": "^7.22.15",
     "@babel/preset-env": "^7.22.15",
-    "@types/app-root-path": "^1.2.5",
     "@types/chai": "^4.3.6",
     "@types/eslint": "^8.44.2",
-    "@types/lodash": "^4.14.197",
     "@types/mocha": "^10.0.1",
     "@types/prettier": "^3.0.0",
-    "@types/webpack": "^5.28.2",
     "@typescript-eslint/eslint-plugin": "^6.6.0",
     "@typescript-eslint/parser": "^6.6.0",
-    "app-root-path": "^3.1.0",
     "chai": "^4.3.8",
     "eslint": "^8.48.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-jsonc": "^2.9.0",
     "eslint-plugin-prettier": "^5.0.0",
     "jsonc-eslint-parser": "^2.3.0",
-    "lodash": "^4.17.21",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
     "prettier": "^3.0.3",
-    "ts-loader": "^9.4.4",
     "ts-mocha": "^10.0.0",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.2.2",
-    "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@rksan/random-string": "file:rksan-random-string-0.0.1.tgz"
   }
 }
