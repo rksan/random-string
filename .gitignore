@@ -1,4 +1,6 @@
 # add
+.build
+.lib
 tsconfig.tsnode.json
 
 # Logs

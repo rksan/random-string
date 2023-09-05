@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "./tsconfig.json"
+  ],
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/node_modules/*",
+  ],
+  "compilerOptions": {
+    "noEmit": false,
+    "rootDir": "./src",
+    "outDir": "./.build",
+    /* "typeRoots": [
+      "./types-defines",
+      "node_modules/@types"
+    ], */
+    "emitDeclarationOnly": true, /* Only output d.ts files and not JavaScript files. */
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "./types-defines",
+  }
+}
