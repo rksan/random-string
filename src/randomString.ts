@@ -7,12 +7,12 @@ export const randomString = (
     src?: string | types.RandomStringRange | types.RandomStringRange[];
     exclude?: string | types.RandomStringRange | types.RandomStringRange[];
   }
-): classes.RandomString => {
+): string => {
   if (options) {
     const rStr = new classes.RandomString(length, options.src, options.exclude);
-    return rStr;
+    return rStr.toString();
   } else {
     const rStr = new classes.RandomString(length);
-    return rStr;
+    return rStr.toString();
   }
 };
