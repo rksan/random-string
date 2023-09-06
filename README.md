@@ -46,25 +46,29 @@ const rdmStr: RandomString = randomString(
 
 #### `length`
 
-`@type` `{number}`
-
 生成する文字列の長さ
+
+`@type` `number`
 
 #### `options?`
 
-`@type` `{src?: object, exclude?: object}`
-
 生成する文字列のオプション
+
+`@type` `{ src?: object, exclude?: object }`
 
 ##### `options?.src?`
 
-`@type` `{string | { start: string, end: string } | [{ start: string, end: string }]`
+生成される文字列のソース
 
-`@default` `{{ start: "!", end: "~" }}`
+UTF8コードの範囲で、必ず `src.start <= src.end` にする必要がある
 
-生成される文字列のソースを指定する。
+`@type` `string | { start: string, end: string } | Array<{ start: string, end: string }>`
 
-UTF8コードの範囲で、必ず `src.start <= src.end` にする必要があります。
+- `string` : 指定された文字列のみを使用する
+- `{ start, end }` : `start`から`end`までのUTF8コード範囲内にある文字の全てを使用する
+- `Array<{start, end}>` : １文字を出力する都度、渡された`Array`からランダムに`{start, end}`を取得し、取得した`start`から`end`までのUTF8コード範囲内にある文字の全てを使用する
+
+`@default` `{ start: "!", end: "~" }`
 
 `exp.`
 
@@ -106,12 +110,17 @@ const rdmStr = randomString(8, {
 
 ##### `options?.exclude`
 
-- `@type` `{string | {start: string, end: string} | [{start: string, end: string}]}`
-- `@default` `undefined`
+生成される文字列から除外する文字
 
-生成される文字列から除外する文字を指定する
+UTF8コードの範囲で、必ず `exclude.start <= exclude.end` にする必要がある
 
-UTF8コードの範囲で、必ず `exclude.start <= exclude.end` にする必要があります。
+`@type` `{string | {start: string, end: string} | [{start: string, end: string}]}`
+
+- `string` : 指定された文字列は除外される
+- `{start, end}` : 指定された`start`から`end`までのUTF8文字は全て除外される
+- `Array<{start, end}>` : 配列として指定された全ての`start`から`end`までのUTF8文字は全て除外される
+
+`@default` `undefined`
 
 `exp.`
 
@@ -168,6 +177,10 @@ const rdmStr = randomString(8, {
 
 #### `rdmStr`
 
+ランダムな文字列を含んだオブジェクト
+
+`toString()`メソッドを含んでいるので`console.log(`${rdmStr}`)`で、コンソールにはランダム文字列が出力される
+
 `@type` `{RandomString}`
 
 ### `interface RandomString`
@@ -182,7 +195,10 @@ interface RandomString{
 
 ##### `toString()`
 
+生成されたランダム文字列を返す
+
 `@param` `none`
+
 `@return` `{string}` 生成されたランタム文字列
 
 `exp.`
