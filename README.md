@@ -4,7 +4,17 @@
 
 ## overview
 
-ランダムな文字列を生成します
+UTF-8の範囲内でランダムな文字列を生成
+
+## Usage
+
+```javascript
+import { randomString } from "@rksan/random-string";
+
+const rdmStr = randomString(16);
+
+console.log(`randam string is "${rdmStr.toString()}"`);
+```
 
 ## Requirement
 
@@ -12,24 +22,14 @@
 
 ## Install
 
-@TODO
-
-## Usage
-
-```typescript
-import { randomString } from "@rksan/random-string";
-
-const str = randomString(16);
-
-console.log(`randam string is "${str}"`);
+```shell
+npm i -D @rksan/random-string
 ```
 
-## Featuires
-
-### syntax
+## syntax
 
 ```typescript
-const str: string = randomString(
+const rdmStr: RandomString = randomString(
   length: number,
   options?: {
     src?: string
@@ -42,7 +42,7 @@ const str: string = randomString(
 )
 ```
 
-### args
+### arguments
 
 #### `length`
 
@@ -60,6 +60,8 @@ const str: string = randomString(
 
 `@type` `{string | { start: string, end: string } | [{ start: string, end: string }]`
 
+`@default` `{{ start: "!", end: "~" }}`
+
 生成される文字列のソースを指定する。
 
 UTF8コードの範囲で、必ず `src.start <= src.end` にする必要があります。
@@ -67,21 +69,24 @@ UTF8コードの範囲で、必ず `src.start <= src.end` にする必要があ�
 `exp.`
 
 ```typescript
-// string
-const str = randomString(8, {
+// Not specified
+const rdmStr = randomString(8);
+
+// Specified by String
+const rdmStr = randomString(8, {
   src: "0123456789",
 });
 
-// object
-const str = randomString(8, {
+// Specified by Object
+const rdmStr = randomString(8, {
   src: {
     start: "a",
     end: "z",
   },
 });
 
-// object array
-const str = randomString(8, {
+// Specified by Object array
+const rdmStr = randomString(8, {
   src: [
     {
       start: "0",
@@ -101,7 +106,8 @@ const str = randomString(8, {
 
 ##### `options?.exclude`
 
-`@type` `{string | {start: string, end: string} | [{start: string, end: string}]}`
+- `@type` `{string | {start: string, end: string} | [{start: string, end: string}]}`
+- `@default` `undefined`
 
 生成される文字列から除外する文字を指定する
 
@@ -110,8 +116,16 @@ UTF8コードの範囲で、必ず `exclude.start <= exclude.end` にする必�
 `exp.`
 
 ```typescript
-// string
-const str = randomString(8, {
+// Not specified
+const rdmStr = randomString(8, {
+  src: {
+    start: "0",
+    end: "z",
+  },
+});
+
+// Specified by String
+const rdmStr = randomString(8, {
   src: {
     start: "0",
     end: "z",
@@ -119,8 +133,8 @@ const str = randomString(8, {
   exclude: ":;<=>?@[\\]^_`",
 });
 
-// object
-const str = randomString(8, {
+// Specified by Object
+const rdmStr = randomString(8, {
   src: {
     start: "0",
     end: "Z",
@@ -131,8 +145,8 @@ const str = randomString(8, {
   },
 });
 
-// object array
-const str = randomString(8, {
+// Specified by Object array
+const rdmStr = randomString(8, {
   src: {
     start: "0",
     end: "z",
@@ -150,13 +164,46 @@ const str = randomString(8, {
 });
 ```
 
+### return
+
+#### `rdmStr`
+
+`@type` `{RandomString}`
+
+### `interface RandomString`
+
+```tpyescript
+interface RandomString{
+  toString(): string;
+}
+```
+
+#### `methods`
+
+##### `toString()`
+
+`@param` `none`
+`@return` `{string}` 生成されたランタム文字列
+
+`exp.`
+
+```typescript
+const rdmStr = randomString(8);
+
+const str: string = rdmStr.toString();
+
+console.log("str=", str);
+```
+
 # Reference
 
 - [UTF-8 encoding table and Unicode characters | utf8-chartable.de](https://www.utf8-chartable.de/)
 
+- [Math.random() | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Math/random)
+
 # Author
 
-@rksan
+@rksan [https://github.com/rksan | github](https://github.com/rksan)
 
 # Licence
 
