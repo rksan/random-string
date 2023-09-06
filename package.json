@@ -1,7 +1,7 @@
 {
   "name": "@rksan/random-string",
   "description": "Generate random string",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/index.js",
   "types": "types-defines/index.d.ts",
   "publishConfig": {
@@ -13,11 +13,9 @@
     "test": "nyc ts-mocha --paths -p ./tsconfig.tsnode.json test/**/*.spec.ts",
     "precoverage": "rm -rf coverage && mkdir coverage",
     "coverage": "npm run test && nyc report --reporter=lcovonly",
-    "prebuild:ts": "rm -rf types-defines",
-    "build:ts": "tsc -d -p ./tsconfig.build.json",
+    "prebuild:ts": "rm -rf dist  && rm -rf types-defines",
+    "build:ts": "tsc -d -p ./tsconfig.build.json && tsc-alias -p ./tsconfig.build.json",
     "build": "npm run build:ts",
-    "prebuild:clean": "rm -rf dist",
-    "build:clean": "npm run build",
     "publish": "npm publish --access public"
   },
   "repository": {
@@ -55,6 +53,7 @@
     "prettier": "^3.0.3",
     "ts-mocha": "^10.0.0",
     "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.7",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.2.2"
   }
