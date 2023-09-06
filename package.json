@@ -1,7 +1,7 @@
 {
   "name": "@rksan/random-string",
   "description": "Generate random string",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "main": "dist/index.js",
   "types": "types-defines/index.d.ts",
   "publishConfig": {
@@ -15,8 +15,7 @@
     "coverage": "npm run test && nyc report --reporter=lcovonly",
     "prebuild:ts": "rm -rf dist  && rm -rf types-defines",
     "build:ts": "tsc -d -p ./tsconfig.build.json && tsc-alias -p ./tsconfig.build.json",
-    "build": "npm run build:ts",
-    "publish": "npm publish --access public"
+    "build": "npm run build:ts"
   },
   "repository": {
     "type": "git",
