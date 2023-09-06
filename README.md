@@ -179,7 +179,7 @@ const rdmStr = randomString(8, {
 
 ランダムな文字列を含んだオブジェクト
 
-`toString()`メソッドを含んでいるので`console.log(`${rdmStr}`)`で、コンソールにはランダム文字列が出力される
+`toString()`メソッドを含んでいるので`console.log(``${rdmStr}``)`で、コンソールにはランダム文字列が出力される
 
 `@type` `{RandomString}`
 
