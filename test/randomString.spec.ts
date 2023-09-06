@@ -170,14 +170,7 @@ describe("randomString", () => {
     const reg = new RegExp(source, "g");
     const noStr = str.toString().replace(reg, "");
 
-    assert.isOk(
-      noStr === "",
-      `str="${str}", noStr="${noStr}", str=${JSON.stringify(
-        str.toJSON(),
-        null,
-        2
-      )}`
-    );
+    assert.isOk(noStr === "", `str="${str}", noStr="${noStr}"}`);
     assert.isOk(
       str.toString().length === length,
       `str.length is not ${length}`
@@ -209,14 +202,7 @@ describe("randomString", () => {
     const reg = new RegExp(source, "g");
     const noStr = str.toString().replace(reg, "");
 
-    assert.isOk(
-      noStr === "",
-      `str="${str}", noStr="${noStr}"}, str=${JSON.stringify(
-        str.toJSON(),
-        null,
-        2
-      )}`
-    );
+    assert.isOk(noStr === "", `str="${str}", noStr="${noStr}"}}`);
     assert.isOk(
       str.toString().length === length,
       `str.length is not ${length}`
@@ -235,14 +221,7 @@ describe("randomString", () => {
     const reg = new RegExp(source, "g");
     const noStr = str.toString().replace(reg, "");
 
-    assert.isOk(
-      noStr === "",
-      `str="${str}", noStr="${noStr}"}, str=${JSON.stringify(
-        str.toJSON(),
-        null,
-        2
-      )}`
-    );
+    assert.isOk(noStr === "", `str="${str}", noStr="${noStr}"}`);
     assert.isOk(
       str.toString().length === length,
       `str.length is not ${length}`
