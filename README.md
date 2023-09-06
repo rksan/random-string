@@ -11,9 +11,9 @@ UTF-8の範囲内でランダムな文字列を生成
 ```javascript
 import { randomString } from "@rksan/random-string";
 
-const rdmStr = randomString(16);
+const str = randomString(16);
 
-console.log(`randam string is "${rdmStr.toString()}"`);
+console.log(`randam string is "${str}"`);
 ```
 
 ## Requirement
@@ -29,7 +29,7 @@ npm i -D @rksan/random-string
 ## syntax
 
 ```typescript
-const rdmStr: RandomString = randomString(
+const str: string = randomString(
   length: number,
   options?: {
     src?: string
@@ -74,15 +74,15 @@ UTF8コードの範囲で、必ず `src.start <= src.end` にする必要があ�
 
 ```typescript
 // Not specified
-const rdmStr = randomString(8);
+const str = randomString(8);
 
 // Specified by String
-const rdmStr = randomString(8, {
+const str = randomString(8, {
   src: "0123456789",
 });
 
 // Specified by Object
-const rdmStr = randomString(8, {
+const str = randomString(8, {
   src: {
     start: "a",
     end: "z",
@@ -90,7 +90,7 @@ const rdmStr = randomString(8, {
 });
 
 // Specified by Object array
-const rdmStr = randomString(8, {
+const str = randomString(8, {
   src: [
     {
       start: "0",
@@ -126,7 +126,7 @@ UTF8コードの範囲で、必ず `exclude.start <= exclude.end` にする必�
 
 ```typescript
 // Not specified
-const rdmStr = randomString(8, {
+const str = randomString(8, {
   src: {
     start: "0",
     end: "z",
@@ -134,7 +134,7 @@ const rdmStr = randomString(8, {
 });
 
 // Specified by String
-const rdmStr = randomString(8, {
+const str = randomString(8, {
   src: {
     start: "0",
     end: "z",
@@ -143,7 +143,7 @@ const rdmStr = randomString(8, {
 });
 
 // Specified by Object
-const rdmStr = randomString(8, {
+const str = randomString(8, {
   src: {
     start: "0",
     end: "Z",
@@ -155,7 +155,7 @@ const rdmStr = randomString(8, {
 });
 
 // Specified by Object array
-const rdmStr = randomString(8, {
+const str = randomString(8, {
   src: {
     start: "0",
     end: "z",
@@ -175,41 +175,11 @@ const rdmStr = randomString(8, {
 
 ### return
 
-#### `rdmStr`
+#### `str`
 
-ランダムな文字列を含んだオブジェクト
+ランダムな文字列
 
-`toString()`メソッドを含んでいるので`console.log(``${rdmStr}``)`で、コンソールにはランダム文字列が出力される
-
-`@type` `{RandomString}`
-
-### `interface RandomString`
-
-```tpyescript
-interface RandomString{
-  toString(): string;
-}
-```
-
-#### `methods`
-
-##### `toString()`
-
-生成されたランダム文字列を返す
-
-`@param` `none`
-
-`@return` `{string}` 生成されたランタム文字列
-
-`exp.`
-
-```typescript
-const rdmStr = randomString(8);
-
-const str: string = rdmStr.toString();
-
-console.log("str=", str);
-```
+`@type` `{string}`
 
 # Reference
 
