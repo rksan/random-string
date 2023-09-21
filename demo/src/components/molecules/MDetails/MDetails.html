@@ -1,0 +1,14 @@
+<div class="details">
+  <div class="summary" @click="doClickSummary">
+    <slot name="summary">
+      <div v-if="summary" class="summary-label">
+        <i class="bi bi-caret-right summary-icon-closed"></i>
+        <i class="bi bi-caret-down summary-icon-opened"></i>
+        {{ summary }}
+      </div>
+    </slot>
+  </div>
+  <div class="details-body">
+    <slot></slot>
+  </div>
+</div>

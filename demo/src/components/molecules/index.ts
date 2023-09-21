@@ -1,3 +1,3 @@
-import MDetailsVue from "./MDetails.vue";
+import MDetailsVue from "./MDetails";
 
 export { MDetailsVue };
