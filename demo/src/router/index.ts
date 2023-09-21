@@ -20,7 +20,7 @@ const routes: Array<RouteRecordRaw> = [
 
 const BASE_URL = (() => {
   if (process.env.NODE_ENV === "production") {
-    return process.env.BASE_URL + "/rksan/random-string";
+    return process.env.BASE_URL + "/random-string";
   } else {
     return process.env.BASE_URL;
   }
