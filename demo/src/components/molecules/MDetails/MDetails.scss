@@ -1,0 +1,29 @@
+.details {
+  border: 1px solid gray;
+  border-radius: 4px;
+  padding: 0.5em 0.5em 0;
+  &[data-open] {
+    padding: 0.5em;
+  }
+}
+
+.summary {
+  font-weight: bold;
+  margin: -0.5em -0.5em 0;
+  padding: 0.5em;
+  cursor: pointer;
+
+  .summary-icon-opened {
+    display: inline;
+  }
+  .summary-icon-closeed {
+    display: none;
+  }
+}
+
+.details-body {
+  display: none;
+  &[data-open] {
+    display: block;
+  }
+}

@@ -1,0 +1,17 @@
+.summary {
+  .summary-opened {
+    display: none;
+  }
+  .summary-closed {
+    display: block;
+  }
+
+  &[data-open] {
+    & .summary-opened {
+      display: block;
+    }
+    & .summary-closed {
+      display: none;
+    }
+  }
+}
