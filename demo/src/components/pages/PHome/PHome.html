@@ -1,0 +1,106 @@
+<div class="container">
+  <h1>Random String Demo</h1>
+  <form novalidate :class="classes.form">
+    <!-- Result -->
+    <div class="form-floating mb-3">
+      <textarea
+        id="result"
+        class="form-control"
+        name="Result"
+        v-model="data.result"
+        :placeholder="`${data.sample}`"
+      ></textarea>
+      <label for="result" class="form-label">{{`Result`}}</label>
+    </div>
+
+    <!-- buttons -->
+    <div class="row gy-1 gx-2 align-items-center">
+      <div class="col-auto">
+        <button class="btn btn-primary" @click="doClickRandomString">
+          Generate Random String
+        </button>
+      </div>
+      <div class="col-2">
+        <button class="btn btn-warning">Clear</button>
+      </div>
+    </div>
+
+    <!-- arguments -->
+    <fieldset class="raw mb-3">
+      <legend class="col form-label">aruguments</legend>
+      <!-- varidation -->
+      <div class="row mb-3" v-if="data.message">
+        <div class="col">
+          <p class="lead bg-danger text-light">
+            {{`invalid : ${data.message}`}}
+          </p>
+        </div>
+      </div>
+
+      <!-- Length -->
+      <div class="row mb-3 align-items-center">
+        <div class="col-auto">
+          <div class="form-floating">
+            <input
+              type="number"
+              id="input-length-number"
+              class="form-control"
+              min="1"
+              max="128"
+              list="input-length-range-list"
+              v-model="model.length"
+              required
+            />
+            <label for="input-length-number" class="form-label">Length</label>
+          </div>
+        </div>
+        <div class="col">
+          <input
+            type="range"
+            id="input-length-range"
+            style="width: 100%"
+            min="1"
+            max="128"
+            list="input-length-range-list"
+            v-model="model.length"
+          />
+        </div>
+        <datalist id="input-length-range-list">
+          <option value="1">1</option>
+          <option value="8">8</option>
+          <option value="16">16</option>
+          <option value="32">32</option>
+          <option value="64">64</option>
+          <option value="128">128</option>
+        </datalist>
+      </div>
+
+      <!-- option src -->
+      <div class="row">
+        <div class="col">
+          <OOptionsVue
+            id="options-src"
+            title="src"
+            :args="model.src"
+            @change-options="fireChangeOptionsSrc"
+            reqired
+          >
+          </OOptionsVue>
+        </div>
+      </div>
+
+      <!-- option exclude-->
+      <div class="row">
+        <div class="col">
+          <OOptionsVue
+            id="options-exclude"
+            title="exclude"
+            :args="model.exclude"
+            @change-options="fireChangeOptionsExclude"
+          >
+          </OOptionsVue>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>

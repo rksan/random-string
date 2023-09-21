@@ -1,0 +1,63 @@
+<!-- o-options-arg -->
+<div class="row" :id="id">
+  <div class="col-auto">
+    <div class="form-floating">
+      <select
+        class="form-select arg-kind"
+        :id="`kind-${id}`"
+        v-model="model.kind"
+        @change="doChangeKind"
+      >
+        <option value="text">text</option>
+        <option value="range">range</option>
+      </select>
+      <label :for="`kind-${id}`">Kind</label>
+    </div>
+  </div>
+
+  <template v-if="model.kind === 'range'">
+    <div class="col">
+      <div class="form-floating">
+        <select
+          :id="`start-${id}`"
+          class="form-select arg-start"
+          v-model="model.start"
+          @change="doChangeStart"
+        >
+          <template v-for="(char, idx) in model.options" :key="idx">
+            <option :value="char">{{ char }}</option>
+          </template>
+        </select>
+        <label :for="`start-${id}`" class="form-label">Start</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-floating">
+        <select
+          :id="`end-${id}`"
+          class="form-select"
+          v-model="model.end"
+          @change="doChangeEnd"
+        >
+          <template v-for="(char, idx) in model.options" :key="idx">
+            <option :value="char">{{ char }}</option>
+          </template>
+        </select>
+        <label :for="`end-${id}`" class="from-label">End</label>
+      </div>
+    </div>
+  </template>
+
+  <template v-else>
+    <div class="col">
+      <div class="form-floating">
+        <textarea
+          :id="`text-${id}`"
+          class="form-control"
+          v-model="model.text"
+        />
+        <label :for="`text-${id}`" class="from-label">Text</label>
+      </div>
+    </div>
+  </template>
+</div>

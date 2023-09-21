@@ -1,0 +1,65 @@
+<!-- o-options -->
+<MDetailsVue :summary="title" :id="id" class="mb-3">
+  <template #summary>
+    <!-- details closed -->
+    <div class="summary-closed">
+      <div class="row">
+        <!-- summary label -->
+        <div class="col">
+          <i class="bi bi-caret-right summary-icon-closed"></i>
+          {{title}}
+        </div>
+      </div>
+    </div>
+    <!-- /details closed -->
+
+    <!-- details opened -->
+    <div class="summary-opened">
+      <div class="row">
+        <!-- summary label -->
+        <div class="col">
+          <i class="bi bi-caret-down summary-icon-opened"></i>
+          {{title}}
+        </div>
+
+        <!-- add button -->
+        <div class="col-auto">
+          <button
+            class="btn btn-success"
+            @click="doClickAdd"
+            style="z-index: 1"
+          >
+            <i class="bi bi-plus-circle"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- /details opened -->
+  </template>
+
+  <template v-for="(arg, idx) in model.args" :key="idx">
+    <div class="row mb-3">
+      <!-- args maker -->
+      <div class="col">
+        <OOptionsArgVue
+          :id="`${id}-${idx}`"
+          :data-list-index="idx"
+          :options="options"
+          :arg="arg"
+          @change-options-arg="fireChangeOptions"
+        ></OOptionsArgVue>
+      </div>
+
+      <!-- delete button -->
+      <div class="col-auto">
+        <button
+          class="btn btn-danger"
+          @click="doClickDel"
+          :data-list-index="idx"
+        >
+          <i class="bi bi-dash-circle"></i>
+        </button>
+      </div>
+    </div>
+  </template>
+</MDetailsVue>
