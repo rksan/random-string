@@ -47,9 +47,9 @@ const setup: ComponentOptions["setup"] = () => {
 
   const checkKind = (args: never[]) => {
     for (let i = 0; i < args.length; i++) {
-      return args[i];
+      return typeof args[i];
     }
-    return "object";
+    return "string";
   };
 
   const clearValidity = () => {
@@ -97,13 +97,12 @@ const setup: ComponentOptions["setup"] = () => {
       checkKind(model.src) === "object"
         ? model.src.filter((v, i, a) => typeof v === typeof a[0])
         : model.src[0];
+
     const exclude =
       checkKind(model.exclude) === "object"
         ? model.exclude.filter((v, i, a) => typeof v === typeof a[0])
         : model.exclude[0];
 
-    console.log("model.src=", model.src, "model.exclude=", model.exclude);
-    console.log("src=", src, "exclude=", exclude);
     const str = randomString(length, { src, exclude });
 
     data.result = str;
