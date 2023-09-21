@@ -4,7 +4,15 @@
 
 ## overview
 
-UTF-8の範囲内でランダムな文字列を生成
+UTF-8の範囲内でランダムな文字列を生成。
+
+- [サロゲートペア | ウィキペディア](https://ja.wikipedia.org/wiki/Unicode#%E3%82%B5%E3%83%AD%E3%82%B2%E3%83%BC%E3%83%88%E3%83%9A%E3%82%A2)には非対応
+
+## Demo
+
+次のリンクからアクセスしてください。
+
+[random-string | Github Pages](https://rksan.github.io/random-string)
 
 ## Usage
 
