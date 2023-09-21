@@ -3,7 +3,7 @@ module.exports = defineConfig({
   transpileDependencies: true,
 
   // github pages
-  outputDir: "github/workspace/docs",
+  outputDir: "../docs",
   assetsDir: "./",
   publicPath: "./",
 
